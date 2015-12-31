@@ -1,0 +1,165 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "Wesley Brooks",
+    "longName": "BIG again",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/BIG again screenshot.png",
+                "menuIcon": true,
+                "name": "screenshot",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_null.png",
+                "name": "BIG_null",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_9_wh.png",
+                "name": "BIG_9_wh",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_9_gr.png",
+                "name": "BIG_9_gr",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_8_wh.png",
+                "name": "BIG_8_wh",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_8_gr.png",
+                "name": "BIG_8_gr",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_7_wh.png",
+                "name": "BIG_7_wh",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_7_gr.png",
+                "name": "BIG_7_gr",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_6_wh.png",
+                "name": "BIG_6_wh",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_6_gr.png",
+                "name": "BIG_6_gr",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_5_wh.png",
+                "name": "BIG_5_wh",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_5_gr.png",
+                "name": "BIG_5_gr",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_4_wh.png",
+                "name": "BIG_4_wh",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_4_gr.png",
+                "name": "BIG_4_gr",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_3_wh.png",
+                "name": "BIG_3_wh",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_2_wh.png",
+                "name": "BIG_2_wh",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_3_gr.png",
+                "name": "BIG_3_gr",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_2_gr.png",
+                "name": "BIG_2_gr",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_1_wh.png",
+                "name": "BIG_1_wh",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_1_gr.png",
+                "name": "BIG_1_gr",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_0_wh.png",
+                "name": "BIG_0_wh",
+                "targetPlatforms": [
+                    "aplite",
+                    "basalt",
+                    "chalk"
+                ],
+                "type": "bitmap"
+            },
+            {
+                "file": "images/BIG_0_gr.png",
+                "name": "BIG_0_gr",
+                "targetPlatforms": [
+                    "aplite",
+                    "basalt",
+                    "chalk"
+                ],
+                "type": "bitmap"
+            }
+        ]
+    },
+    "sdkVersion": "3",
+    "shortName": "BIG again",
+    "targetPlatforms": [
+        "aplite",
+        "basalt"
+    ],
+    "uuid": "47d2fd2a-7809-4cfe-9144-08173353aaad",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
