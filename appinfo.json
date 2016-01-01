@@ -9,10 +9,14 @@
     "resources": {
         "media": [
             {
-                "file": "images/BIG again screenshot.png",
+                "file": "images/BIG tiny.png",
                 "menuIcon": true,
-                "name": "screenshot",
-                "targetPlatforms": null,
+                "name": "BIG_TINY",
+                "targetPlatforms": [
+                    "aplite",
+                    "basalt",
+                    "chalk"
+                ],
                 "type": "bitmap"
             },
             {
@@ -158,7 +162,7 @@
         "basalt"
     ],
     "uuid": "47d2fd2a-7809-4cfe-9144-08173353aaad",
-    "versionLabel": "1.0",
+    "versionLabel": "1.2",
     "watchapp": {
         "watchface": true
     }
