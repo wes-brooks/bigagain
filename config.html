@@ -24,13 +24,24 @@
     <div class='item-container'>
       <div class='item-container-content'>
         <div class='item'>
-          Use this configuration page to choose the background color for BIG Again
+          Use this configuration page to set the colors for BIG Again
         </div>
       </div>
     </div>
 
+
     <div class='item-container'>
       <div class='item-container-header'>Customizability</div>
+      <div class='item-container-content'>
+        <label class='item'>
+          Invert Colors
+          <input type='checkbox' class='item-toggle' id='invert-toggle'>
+        </label>
+      </div>
+      <div class='item-container-footer'>
+        Invert the A and B colors of the watchface.
+      </div>
+
       <div class='item-container-content'>
         <label class='item'>
           Background Color
@@ -51,13 +62,16 @@
   <script>
   function getConfigData() {
     var backgroundColorPicker = document.getElementById('background_color_picker');
- 
+    var invertColorToggle = document.getElementById('invert-toggle'); 
+
     var options = {
-      'background_color': backgroundColorPicker.value
+      'background_color': backgroundColorPicker.value,
+      'invert_colors': invertColorToggle.checked
     };
 
     // Save for next launch
-    localStorage['background_color'] = options['background_color'];
+    localStorage.invert_colors = options.invert_colors;
+    localStorage.background_color = options.background_color;
 
     console.log('Got options: ' + JSON.stringify(options));
     return options;
@@ -86,10 +100,15 @@
 
   (function() {
     var backgroundColorPicker = document.getElementById('background_color_picker');
+    var invertColorToggle = document.getElementById('invert-toggle');
 
     // Load any previously saved configuration, if available
-    if(localStorage['background_color']) {
-      backgroundColorPicker.value = localStorage['background_color'];
+    if(localStorage.invert_colors) {
+      invertColorToggle.value = localStorage.invert_colors;
+    }
+
+    if(localStorage.background_color) {
+      backgroundColorPicker.value = localStorage.background_color;
     }
   })();
   </script>
