@@ -32,6 +32,13 @@
 
     <div class='item-container'>
       <div class='item-container-header'>Customizability</div>
+        <div class='item-container-content'>
+        <label class='item'>
+          Solid minute digits
+          <input id='solid-toggle' type='checkbox' class='item-toggle'>
+        </label>
+      </div>
+      
       <div class='item-container-content'>
         <label class='item'>
           Color A
@@ -60,15 +67,18 @@
   function getConfigData() {
     var colorPickerA = document.getElementById('color_picker_a');
     var colorPickerB = document.getElementById('color_picker_b'); 
+    var solidToggle = document.getElementById('solid-toggle'); 
 
     var options = {
       'color_a': colorPickerA.value,
-      'color_b': colorPickerB.value
+      'color_b': colorPickerB.value,
+      'solid_minutes': solidToggle.checked
     };
 
     // Save for next launch
     localStorage.color_a = options.color_a;
     localStorage.color_b = options.color_b;
+    localStorage.solid_minutes = options.solid_minutes;
 
     console.log('Got options: ' + JSON.stringify(options));
     return options;
@@ -98,6 +108,7 @@
   (function() {
     var colorPickerA = document.getElementById('color_picker_a');
     var colorPickerB = document.getElementById('color_picker_b');
+    var solidToggle = document.getElementById('solid-toggle');
 
     // Load any previously saved configuration, if available
     if(localStorage.background_color) {
@@ -106,6 +117,10 @@
 
     if(localStorage.background_color) {
       colorPickerB.value = localStorage.color_b;
+    }
+    
+    if(localStorage.solid_minutes) {
+      solidToggle.checked = JSON.parse(localStorage.solid_minutes);
     }
   })();
   </script>
