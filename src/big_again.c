@@ -7,7 +7,7 @@ static BitmapLayer *s_hr_1_layer, *s_hr_2_layer, *s_min_1_layer, *s_min_2_layer;
 static GBitmap *s_hr_0_bmp, *s_hr_1_bmp, *s_hr_2_bmp, *s_hr_3_bmp, *s_hr_4_bmp, *s_hr_5_bmp, *s_hr_6_bmp, *s_hr_7_bmp, *s_hr_8_bmp, *s_hr_9_bmp;
 static GBitmap *s_min_0_bmp, *s_min_1_bmp, *s_min_2_bmp, *s_min_3_bmp, *s_min_4_bmp, *s_min_5_bmp, *s_min_6_bmp, *s_min_7_bmp, *s_min_8_bmp, *s_min_9_bmp;
 static GBitmap *s_null_bmp;
-static bool invert_colors;
+static bool solid_minutes;
 static EffectLayer *effectlayer;
 
 
@@ -17,6 +17,7 @@ static EffectLayer *effectlayer;
 #define KEY_COLOR_B_RED     3
 #define KEY_COLOR_B_GREEN   4
 #define KEY_COLOR_B_BLUE    5
+#define KEY_SOLID_MINUTES   6
 
 
 GBitmap * get_digit(int value, bool hr) {
@@ -97,8 +98,8 @@ static void update_time() {
   // Set the bitmap onto the layer and add to the window
   draw_digit(hr1, true, s_hr_1_layer);
   draw_digit(hr2, true, s_hr_2_layer);
-  draw_digit(min1, false, s_min_1_layer);
-  draw_digit(min2, false, s_min_2_layer);
+  draw_digit(min1, solid_minutes, s_min_1_layer);
+  draw_digit(min2, solid_minutes, s_min_2_layer);
   
   layer_mark_dirty(bitmap_layer_get_layer(s_hr_1_layer));
   layer_mark_dirty(bitmap_layer_get_layer(s_hr_2_layer));
@@ -145,6 +146,14 @@ static void inbox_received_handler(DictionaryIterator *iter, void *context) {
     color_b = GColorFromRGB(red_b, green_b, blue_b).argb;
   }
   
+  // Should minutes be shown in solid color?
+  Tuple *solid_minutes_t = dict_find(iter, KEY_SOLID_MINUTES);
+  if(solid_minutes_t) {
+    int val = solid_minutes_t->value->int32;
+    solid_minutes = (val == 0 ? false : true);
+    persist_write_bool(KEY_SOLID_MINUTES, solid_minutes);
+  }
+  
   // Apply the new styling
   update_time();
 }
@@ -162,6 +171,7 @@ static void main_window_load(Window *window) {
   // Color defaults
   color_a = GColorBlack.argb;
   color_b = GColorWhite.argb;
+  solid_minutes = false;
   
   if (persist_exists(KEY_COLOR_A_RED) && persist_exists(KEY_COLOR_A_GREEN) && persist_exists(KEY_COLOR_A_BLUE)) {
     // Use saved color setting
@@ -169,7 +179,7 @@ static void main_window_load(Window *window) {
     int green_a = persist_read_int(KEY_COLOR_A_GREEN);
     int blue_a = persist_read_int(KEY_COLOR_A_BLUE);
     color_a = GColorFromRGB(red_a, green_a, blue_a).argb;
-  } else { color_a = GColorBlack.argb; }
+  }
   
   if (persist_exists(KEY_COLOR_B_RED) && persist_exists(KEY_COLOR_B_GREEN) && persist_exists(KEY_COLOR_B_BLUE)) {
     // Use saved color setting
@@ -177,7 +187,12 @@ static void main_window_load(Window *window) {
     int green_b = persist_read_int(KEY_COLOR_B_GREEN);
     int blue_b = persist_read_int(KEY_COLOR_B_BLUE);
     color_b = GColorFromRGB(red_b, green_b, blue_b).argb;
-  } else { color_b = GColorWhite.argb; }
+  }
+  
+  if (persist_exists(KEY_SOLID_MINUTES)) {
+    // Use saved setting
+    solid_minutes = persist_read_bool(KEY_SOLID_MINUTES);
+  }
   
   // Null bitmap:
   s_null_bmp = gbitmap_create_with_resource(RESOURCE_ID_BIG_null);
