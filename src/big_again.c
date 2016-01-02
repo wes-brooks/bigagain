@@ -169,8 +169,8 @@ static void main_window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(s_main_window);
   
   // Color defaults
-  color_a = GColorBlack.argb;
-  color_b = GColorWhite.argb;
+  color_a = GColorWhite.argb;
+  color_b = GColorBlack.argb;
   solid_minutes = false;
   
   if (persist_exists(KEY_COLOR_A_RED) && persist_exists(KEY_COLOR_A_GREEN) && persist_exists(KEY_COLOR_A_BLUE)) {
@@ -179,7 +179,7 @@ static void main_window_load(Window *window) {
     int green_a = persist_read_int(KEY_COLOR_A_GREEN);
     int blue_a = persist_read_int(KEY_COLOR_A_BLUE);
     color_a = GColorFromRGB(red_a, green_a, blue_a).argb;
-  }
+  } else { color_a = GColorWhite.argb; }
   
   if (persist_exists(KEY_COLOR_B_RED) && persist_exists(KEY_COLOR_B_GREEN) && persist_exists(KEY_COLOR_B_BLUE)) {
     // Use saved color setting
@@ -187,7 +187,7 @@ static void main_window_load(Window *window) {
     int green_b = persist_read_int(KEY_COLOR_B_GREEN);
     int blue_b = persist_read_int(KEY_COLOR_B_BLUE);
     color_b = GColorFromRGB(red_b, green_b, blue_b).argb;
-  }
+  } else { color_b = GColorBlack.argb; }
   
   if (persist_exists(KEY_SOLID_MINUTES)) {
     // Use saved setting
