@@ -34,22 +34,19 @@
       <div class='item-container-header'>Customizability</div>
       <div class='item-container-content'>
         <label class='item'>
-          Foreground Color
-          <input id='foreground_color_picker' type='text' class='item-color item-color-sunny' value='#FFFFFF'>
+          Color A
+          <input id='color_picker_a' type='text' class='item-color item-color-sunny' value='#FFFFFF'>
         </label>
-      </div>
-      <div class='item-container-footer'>
-        Choose the app's foreground color.
       </div>
 
       <div class='item-container-content'>
         <label class='item'>
-          Background Color
-          <input id='background_color_picker' type='text' class='item-color item-color-sunny' value='#000000'>
+          Color B
+          <input id='color_picker_b' type='text' class='item-color item-color-sunny' value='#000000'>
         </label>
       </div>
       <div class='item-container-footer'>
-        Choose the app's background color.
+        On black-and-white Pebbles, any non-white color is interpreted as black.
       </div>
     </div>
 
@@ -61,17 +58,17 @@
   </body>
   <script>
   function getConfigData() {
-    var backgroundColorPicker = document.getElementById('background_color_picker');
-    var foregroundColorPicker = document.getElementById('foreground_color_picker'); 
+    var colorPickerA = document.getElementById('color_picker_a');
+    var colorPickerB = document.getElementById('color_picker_b'); 
 
     var options = {
-      'background_color': backgroundColorPicker.value,
-      'foreground_color': foregroundColorPicker.value
+      'color_a': colorPickerA.value,
+      'color_b': colorPickerB.value
     };
 
     // Save for next launch
-    localStorage.foreground_color = options.foreground_color;
-    localStorage.background_color = options.background_color;
+    localStorage.color_a = options.color_picker_a;
+    localStorage.color_b = options.color_picker_b;
 
     console.log('Got options: ' + JSON.stringify(options));
     return options;
@@ -99,16 +96,16 @@
   });
 
   (function() {
-    var backgroundColorPicker = document.getElementById('background_color_picker');
-    var foregroundColorPicker = document.getElementById('foreground_color_picker');
+    var colorPickerA = document.getElementById('color_picker_a');
+    var colorPickerB = document.getElementById('color_picker_b');
 
     // Load any previously saved configuration, if available
     if(localStorage.background_color) {
-      foregroundColorPicker.value = localStorage.foreground_color;
+      colorPickerA.value = localStorage.color_a;
     }
 
     if(localStorage.background_color) {
-      backgroundColorPicker.value = localStorage.background_color;
+      colorPickerB.value = localStorage.color_b;
     }
   })();
   </script>
