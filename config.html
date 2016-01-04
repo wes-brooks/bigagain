@@ -110,6 +110,8 @@
     var colorPickerB = document.getElementById('color_picker_b');
     var solidToggle = document.getElementById('solid-toggle');
 
+    localStorage.clear();
+
     // Load any previously saved configuration, if available
     if(localStorage.background_color) {
       colorPickerA.value = localStorage.color_a;
