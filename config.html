@@ -111,12 +111,12 @@
     var solidToggle = document.getElementById('solid-toggle');
 
     // Load any previously saved configuration, if available
-    if(localStorage.background_color) {
+    if(localStorage.color_a) {
       var colorstring = localStorage.color_a;
       colorPickerA.value = '#' + colorstring.substring(2, colorstring.length);
     }
 
-    if(localStorage.background_color) {
+    if(localStorage.color_b) {
       var colorstring = localStorage.color_b;
       colorPickerB.value = '#' + colorstring.substring(2, colorstring.length);
     }
