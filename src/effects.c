@@ -77,11 +77,11 @@ void effect_double_colorize(GContext* ctx,  GRect position, uint8_t col1, uint8_
   uint8_t white = GColorWhite.argb;
 #else
   // On black and white Pebbles, interpret not-white as black and use 1-bit color:
-  uint8_t black = 1;
-  uint8_t white = 0;
+  uint8_t black = 0;
+  uint8_t white = 1;
   
-  col1 = (col1 == 255 ? 0 : 1);
-  col2 = (col2 == 255 ? 0 : 1);
+  col1 = (col1 == 255 ? 1 : 0);
+  col2 = (col2 == 255 ? 1 : 0);
 #endif
   
   for (int y = 0; y < position.size.h; y++) {
