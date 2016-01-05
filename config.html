@@ -59,6 +59,12 @@
 
     <div class='item-container'>
       <div class='button-container'>
+        <input id='reset_button' type='button' class='item-button' value='RESTORE DEFAULTS'>
+      </div>
+    </div>
+
+    <div class='item-container'>
+      <div class='button-container'>
         <input id='submit_button' type='button' class='item-button' value='SUBMIT'>
       </div>
     </div>
@@ -104,6 +110,27 @@
     var return_to = getQueryParam('return_to', 'pebblejs://close#');
     document.location = return_to + encodeURIComponent(JSON.stringify(getConfigData()));
   });
+  
+  
+  var resetButton = document.getElementById('reset_button');
+  resetButton.addEventListener('click', function() {
+    console.log('Reset to default settings');
+
+    // Grab the controls from the form
+    var colorPickerA = document.getElementById('color_picker_a');
+    var colorPickerB = document.getElementById('color_picker_b');
+    var solidToggle = document.getElementById('solid-toggle');
+    
+    // Reset the controls to their default values
+    colorPickerA.value = '0xFFFFFF';
+    colorPickerB.value = '0x000000';
+    solidToggle.checked = false;
+
+    // Store the defaults and return them to the watch.
+    var return_to = getQueryParam('return_to', 'pebblejs://close#');
+    document.location = return_to + encodeURIComponent(JSON.stringify(getConfigData()));
+  });
+  
 
   (function() {
     var colorPickerA = document.getElementById('color_picker_a');
