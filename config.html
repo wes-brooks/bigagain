@@ -112,11 +112,13 @@
 
     // Load any previously saved configuration, if available
     if(localStorage.background_color) {
-      colorPickerA.value = localStorage.color_a;
+      var colorstring = localStorage.color_a;
+      colorPickerA.value = '#' + colorstring.substring(2, colorstring.length);
     }
 
     if(localStorage.background_color) {
-      colorPickerB.value = localStorage.color_b;
+      var colorstring = localStorage.color_b;
+      colorPickerB.value = '#' + colorstring.substring(2, colorstring.length);
     }
     
     if(localStorage.solid_minutes) {
