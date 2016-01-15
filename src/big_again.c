@@ -90,6 +90,11 @@ static void update_time() {
   // Get the digits of the current hour, in 12 or 24 hour format, as appropriate
   int hr1 = clock_is_24h_style() ? tick_time->tm_hour / 10 : (tick_time->tm_hour % 12) / 10;
   int hr2 = clock_is_24h_style() ? tick_time->tm_hour % 10 : (tick_time->tm_hour % 12) % 10;
+  if (!clock_is_24h_style() && hr1==0 && hr2==0) {
+    // Show 0-hour as 12 for 12-hour clocks
+    hr1 = 1;
+    hr2 = 2;
+  }
   
   // Get the digits of the current minute
   int min1 = tick_time->tm_min / 10;
