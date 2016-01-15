@@ -149,7 +149,7 @@ static void inbox_received_handler(DictionaryIterator *iter, void *context) {
   // Should minutes be shown in solid color?
   Tuple *solid_minutes_t = dict_find(iter, KEY_SOLID_MINUTES);
   if(solid_minutes_t) {
-    int val = solid_minutes_t->value->int32;
+    int val = solid_minutes_t->value->int16;
     solid_minutes = (val == 0 ? false : true);
     persist_write_bool(KEY_SOLID_MINUTES, solid_minutes);
   }
